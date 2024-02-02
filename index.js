@@ -29,6 +29,24 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
 
+        const servicesCollection = client.db('carDoctor').collection('services');
+
+        app.get('/services', async(req,res) =>{
+            const cursor = servicesCollection.find();
+            const result = await cursor.toArray();
+            res.send(result); 
+        })
+
+
+
+
+
+
+
+
+
+
+        // testing the server
         app.get('/', (req, res) => {
             res.send('car doctor is running')
         })
